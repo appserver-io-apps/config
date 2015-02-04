@@ -1,0 +1,38 @@
+{
+    "name":"appserver-io-apps/config",
+    "description":"A simple webapp for editing appserver configuration files via browser ide",
+    "version":"0.1.0",
+    "keywords":[
+        "appserver",
+        "dev",
+        "ide",
+        "config",
+        "configuration"
+    ],
+    "homepage":"https://github.com/appserver-io-apps/config",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Johann Zelger",
+            "email": "jz@appserver.io",
+            "homepage": "http://github.com/zelgerj",
+            "role": "Developer"
+        }
+    ],
+    "require" : {
+        "filicious/core" : "1.0-alpha1"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "AppserverIo\\Server" : [
+                "src/",
+                "tests/"
+            ]
+        }
+    },
+    "support" : {
+        "email" : "jz@appserver.io",
+        "issues" : "https://github.com/appserver-io-apps/config/issues",
+        "source" : "https://github.com/appserver-io-apps/config"
+    }
+}
