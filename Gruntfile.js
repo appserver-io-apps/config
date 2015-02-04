@@ -371,7 +371,11 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+          src: [
+              'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+              'bower_components/ace-builds/src-noconflict/*',
+              'bower_components/ace-builds/src-min-noconflict/*'
+          ],
           dest: '<%= yeoman.dist %>'
         }]
       },
@@ -415,7 +419,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'wiredep',
+      //'wiredep',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -430,7 +434,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'wiredep:test',
+    //'wiredep:test',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
@@ -439,7 +443,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
+    //'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
