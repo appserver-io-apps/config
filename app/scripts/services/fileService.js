@@ -33,7 +33,16 @@ angular.module('configApp')
             return call('file', 'GET', params);
         }
 
+        function setContents(content, filename) {
+            var params = {
+                'content': content,
+                'filename': filename
+            }
+            return call('file', 'POST', params)
+        }
+
         return {
-            getContents: getContents
+            getContents: getContents,
+            setContents: setContents
         };
   });

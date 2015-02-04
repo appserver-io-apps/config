@@ -1,7 +1,12 @@
 <div class="container">
+
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" ng-click="save()">Save</button>
+    </div>
+
     <div ui-ace="{
         workerPath: '/bower_components/ace-builds/src-min-noconflict',
-        useWrapMode: true,
+        useWrapMode: false,
         showGutter: true,
         theme:'eclipse',
         mode: 'xml',
