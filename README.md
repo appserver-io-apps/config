@@ -1,5 +1,7 @@
 # config
 
+[![Build Status](https://travis-ci.org/appserver-io-app/config.png)](https://travis-ci.org/appserver-io-app/config) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/appserver-io-app/config/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/appserver-io-app/config/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/appserver-io-app/config/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/appserver-io-app/config/?branch=master)
+
 This webapp gives you the possibility to simply edit all appserver configuration files in your browser
 
 ## Installation

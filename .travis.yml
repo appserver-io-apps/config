@@ -1,6 +1,12 @@
 language: node_js
+
 node_js:
   - '0.10'
+
 before_script:
   - 'npm install -g bower grunt-cli'
   - 'bower install'
+
+notifications:
+  email: info@appserver.io
+  hipchat: 95d47a72c5372d4a0fef20048c3200@Appserver
