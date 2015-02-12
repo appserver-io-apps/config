@@ -1,5 +1,23 @@
 <?php
 
+/**
+ * \AppserverIo\Apps\Config\Services\FileService
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * PHP version 5
+ *
+ * @author    Johann Zelger <jz@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io-apps/config
+ * @link      http://www.appserver.io/
+ */
+
 namespace AppserverIo\Apps\Config\Services;
 
 use Filicious\Filesystem;
@@ -10,24 +28,28 @@ use Filicious\Local\LocalAdapter;
  *
  * Provides simple file service functionality for servlets usage.
  *
- * @package AppserverIo\Apps\Config\Services
- * @author Johann Zelger <jz@appserver.io>
+ * @author    Johann Zelger <jz@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io-apps/config
+ * @link      http://www.appserver.io/
  *
  * @Stateless
  */
-class FileService {
+class FileService
+{
 
     /**
      * Holds the filesystems adapter to use
      *
-     * @var \Filicious\Local\LocalAdapter
+     * @var \Filicious\Local\LocalAdapter $adapter
      */
     protected $adapter;
 
     /**
      * Holds the filesystem instance
      *
-     * @var \Filicious\Filesystem
+     * @var \Filicious\Filesystem $fileSystem
      */
     protected $fileSystem;
 
@@ -68,11 +90,12 @@ class FileService {
      *
      * @param string $content  The content string to set
      * @param string $filename The filename to set the contents string into it
+     *
+     * @return null
      */
     public function setContents($content, $filename)
     {
         $file = $this->getFileSystem()->getFile($filename);
         $file->setContents($content);
     }
-
 }

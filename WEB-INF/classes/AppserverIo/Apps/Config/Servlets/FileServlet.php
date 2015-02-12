@@ -1,5 +1,23 @@
 <?php
 
+/**
+ * \AppserverIo\Apps\Config\Servlets\FileServlet
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * PHP version 5
+ *
+ * @author    Johann Zelger <jz@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io-apps/config
+ * @link      http://www.appserver.io/
+ */
+
 namespace AppserverIo\Apps\Config\Servlets;
 
 use AppserverIo\Apps\Config\Services\FileService;
@@ -8,9 +26,14 @@ use AppserverIo\Psr\Servlet\Http\HttpServlet;
 use AppserverIo\Psr\Servlet\Http\HttpServletRequestInterface;
 use AppserverIo\Psr\Servlet\Http\HttpServletResponseInterface;
 
-
 /**
  * Class FileServlet
+ *
+ * @author    Johann Zelger <jz@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io-apps/config
+ * @link      http://www.appserver.io/
  *
  * @Route(name="file",
  *        displayName="FileServlet",
@@ -23,8 +46,7 @@ class FileServlet extends HttpServlet
     /**
      * Initializes the servlet with the passed configuration.
      *
-     * @param \AppserverIo\Psr\Servlet\ServletConfig $config
-     *   The configuration to initialize the servlet with
+     * @param \AppserverIo\Psr\Servlet\ServletConfig $config The configuration to initialize the servlet with
      *
      * @return void
      */
@@ -62,10 +84,8 @@ class FileServlet extends HttpServlet
      *
      * Reads the content from a specific file given as param
      *
-     * @param \AppserverIo\Psr\Servlet\Http\HttpServletRequestInterface  $servletRequest
-     *   The request instance
-     * @param \AppserverIo\Psr\Servlet\Http\HttpServletResponseInterface $servletResponse
-     *   The response instance
+     * @param \AppserverIo\Psr\Servlet\Http\HttpServletRequestInterface  $servletRequest  The request instance
+     * @param \AppserverIo\Psr\Servlet\Http\HttpServletResponseInterface $servletResponse The response instance
      *
      * @return void
      * @see \AppserverIo\Psr\Servlet\Http\HttpServlet::doGet()
@@ -92,10 +112,8 @@ class FileServlet extends HttpServlet
      *
      * Writes a given content to a specific file
      *
-     * @param \AppserverIo\Psr\Servlet\Http\HttpServletRequestInterface  $servletRequest
-     *   The request instance
-     * @param \AppserverIo\Psr\Servlet\Http\HttpServletResponseInterface $servletResponse
-     *   The response instance
+     * @param \AppserverIo\Psr\Servlet\Http\HttpServletRequestInterface  $servletRequest  The request instance
+     * @param \AppserverIo\Psr\Servlet\Http\HttpServletResponseInterface $servletResponse The response instance
      *
      * @return void
      * @see \AppserverIo\Psr\Servlet\Http\HttpServlet::doPost()
