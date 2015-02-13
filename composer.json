@@ -1,7 +1,7 @@
 {
     "name":"appserver-io-apps/config",
     "description":"A simple webapp for editing appserver configuration files via browser ide",
-    "version":"0.1.1",
+    "version":"1.0.0",
     "keywords":[
         "appserver",
         "dev",
@@ -23,9 +23,9 @@
         "filicious/core" : "1.0-alpha1"
     },
     "require-dev" : {
-        "appserver-io-psr/servlet": "0.8.*",
-        "appserver-io/build" : "0.2.*",
-        "appserver-io/phar" : "0.1.*"
+        "appserver-io-psr/servlet": "~1.0",
+        "appserver-io/build" : "~1.0",
+        "appserver-io/phar" : "~1.0"
     },
     "autoload" : {
         "psr-0" : {
