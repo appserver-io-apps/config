@@ -24,8 +24,6 @@
     <property name="vendor.dir" value ="${basedir}/${codepool}" />
     <property name="build.dir" value="${vendor.dir}/appserver-io/build" />
     <property name="php-target.dir" value="${basedir}/target"/>
-    <property name="hub.address" value="appserver.io"/>
-    <property name="hub.snapshot-path" value="/var/www/apps.appserver.io/${appserver.webapp.name}/"/>
 
     <!-- ==================================================================== -->
     <!-- Import the common build configuration file                           -->
@@ -92,13 +90,18 @@
     </target>
 
     <!-- ==================================================================== -->
-    <!-- Moves any built package to the download directory of the server.     -->
+    <!-- Copies any built package to the snapshot hosting server.             -->
     <!-- ==================================================================== -->
-    <target name="move-to-hub" description="Moves any built package to the download directory of the server.">
-        <!-- copy it once first -->
-        <copy file="${php-target.dir}/${package.filename}" tofile="${hub.snapshot-path}${package.filename}"/>
-        <!-- now move the file -->
-        <move file="${php-target.dir}/${package.filename}" tofile="${hub.snapshot-path}${appserver.webapp.name}-latest.phar"/>
+    <target name="copy-to-hub" description="Uploads any built package to the file-server.">
+        <echo message="Now try to upload all builds to file-server"/>
+        <exec executable="sh" failonerror="true">
+            <arg value="-c" />
+            <arg value="scp -o StrictHostKeyChecking=no -i ${user.home}/.ssh/id_rsa ${php-target.dir}/${package.filename} ${build.server.user}@${build.server.host}:${build.server.upload-path}" />
+        </exec>
+        <exec executable="sh" failonerror="true">
+            <arg value="-c" />
+            <arg value="scp -o StrictHostKeyChecking=no -i ${user.home}/.ssh/id_rsa ${php-target.dir}/${package.filename} ${build.server.user}@${build.server.host}:${build.server.upload-path}/${appserver.webapp.name}-latest.phar" />
+        </exec>
     </target>
 
     <!-- ==================================================================== -->
@@ -107,7 +110,7 @@
     <target name="deploy" depends="copy" description="Copies the sources to the deploy directory.">
         <!-- copy the sources to the deploy directory -->
         <echo message="Copy sources to ${deploy.dir} ..."/>
-    	<copy todir="${appserver.webapps.dir}" preservelastmodified="true" overwrite="true">
+        <copy todir="${appserver.webapps.dir}" preservelastmodified="true" overwrite="true">
             <fileset dir="${php-target.dir}">
                 <include name="**/*"/>
             </fileset>
@@ -117,7 +120,7 @@
     <!-- ==================================================================== -->
     <!-- Creates a PHAR file for deployment     					  		  -->
     <!-- ==================================================================== -->
-	<target name="create-phar" depends="copy" description="Creates a PHAR file for deployment.">
+    <target name="create-phar" depends="copy" description="Creates a PHAR file for deployment.">
         <!-- create the PHAR archive itself from the backup sources -->
         <exec dir="${php-target.dir}" executable="${vendor.dir}/bin/phar">
             <arg line="-c create -n ${php-target.dir}/${package.filename} -d ${php-target.dir}/${appserver.webapp.name}"/>
@@ -130,7 +133,6 @@
     <target name="deploy-phar" depends="create-phar"
             description="Deploys the PHAR file into the configured deployment directory.">
         <copy file="${php-target.dir}/${package.filename}" tofile="${appserver.deploy.dir}/${appserver.webapp.name}.phar" failonerror="true"/>
-
         <!-- create dodeploy flag to be transmitted via scp and do deploy on target system if needed -->
         <touch file="${appserver.deploy.dir}/${appserver.webapp.name}.phar.dodeploy"/>
     </target>

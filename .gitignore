@@ -8,3 +8,7 @@ dist
 bower_components
 /target
 jmeter.log
+.buildpath
+.project
+.settings/
+
